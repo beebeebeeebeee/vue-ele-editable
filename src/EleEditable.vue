@@ -331,19 +331,37 @@ export default {
           this.isLoading = true;
           await this.requestFn(data);
           this.isError = false;
-          this.$message.success(this.lang.update.success || "Update Success");
+          let success = "Update Success";
+          try {
+            success = this.lang.update.success;
+          } catch (e) {
+            null;
+          }
+          this.$message.success(success);
           this.$emit("input", value);
         } catch (e) {
           this.isError = true;
-          this.$message.error(this.lang.update.error || "Update Failed");
+          let error = "Update Failed";
+          try {
+            error = this.lang.update.error;
+          } catch (e) {
+            null;
+          }
+          this.$message.error(error);
         } finally {
           this.isLoading = false;
         }
       } catch (errors) {
         // 验证规则校检结果展示
         errors.forEach((error) => {
+          let errors = "Error";
+          try {
+            errors = this.lang.error;
+          } catch (e) {
+            null;
+          }
           this.$notify.error({
-            title: this.lang.error || "Error",
+            title: errors,
             message: error.message,
           });
         });
