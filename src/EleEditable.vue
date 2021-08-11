@@ -137,7 +137,7 @@ export default {
     // 值空时显示的文本
     emptyText: {
       type: String,
-      default: null,
+      default: "",
     },
     lang: {
       update: {
