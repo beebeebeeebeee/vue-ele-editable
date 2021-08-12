@@ -139,14 +139,19 @@ export default {
       type: String,
       default: "",
     },
-    lang: {
+    langProp: {
       update: {
-        success: "Update Success",
-        error: "Update Error",
+        success: String,
+        error: String,
       },
-      error: "Error",
-      confirm: "Confirm",
-      cancel: "Cancel",
+      error: String,
+      confirm: String,
+      cancel: String,
+    },
+  },
+  watch:{
+    langProp: function(val){
+      this.lang = val;
     },
   },
   computed: {
@@ -227,6 +232,15 @@ export default {
   },
   data() {
     return {
+       lang: {
+        update: {
+          success: "Update Success",
+          error: "Update Error",
+        },
+        error: "Error",
+        confirm: "Confirm",
+        cancel: "Cancel",
+      },
       // 请求是否出错
       isError: false,
       // 是否正在请求
