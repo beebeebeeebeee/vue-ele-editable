@@ -141,10 +141,12 @@ export default {
     },
     lang: {
       update: {
-        success: String,
-        error: String,
+        success: "Update Success",
+        error: "Update Error",
       },
-      error: String,
+      error: "Error",
+      confirm: "Confirm",
+      cancel: "Cancel",
     },
   },
   computed: {
@@ -331,37 +333,18 @@ export default {
           this.isLoading = true;
           await this.requestFn(data);
           this.isError = false;
-          let success = "Update Success";
-          try {
-            success = this.lang.update.success;
-          } catch (e) {
-            null;
-          }
-          this.$message.success(success);
+          this.$message.success(this.lang.update.success);
           this.$emit("input", value);
         } catch (e) {
-          this.isError = true;
-          let error = "Update Failed";
-          try {
-            error = this.lang.update.error;
-          } catch (e) {
-            null;
-          }
-          this.$message.error(error);
+          this.$message.error(this.lang.update.error);
         } finally {
           this.isLoading = false;
         }
       } catch (errors) {
         // 验证规则校检结果展示
         errors.forEach((error) => {
-          let errors = "Error";
-          try {
-            errors = this.lang.error;
-          } catch (e) {
-            null;
-          }
           this.$notify.error({
-            title: errors,
+            title: this.lang.error,
             message: error.message,
           });
         });

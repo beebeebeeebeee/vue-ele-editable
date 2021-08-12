@@ -53,12 +53,12 @@
                   <el-button
                     @click="handleHideEditing"
                     size="small"
-                  >取消</el-button>
+                  >{{$parent.lang.cancel}}</el-button>
                   <el-button
                     @click="handleChange"
                     size="small"
                     type="primary"
-                  >确定</el-button>
+                  >{{$parent.lang.confirm}}</el-button>
                 </div>
               </template>
             </ele-editable-wrapper-form>
